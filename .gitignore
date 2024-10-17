@@ -1,4 +1,4 @@
 /.idea/*
 /.vscode/*
 /.pytest_cache/*
-./easy_pyweb.egg-info/*
+/easy_pyweb.egg-info/*
