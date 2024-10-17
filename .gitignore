@@ -2,3 +2,4 @@
 /.vscode/*
 /.pytest_cache/*
 /easy_pyweb.egg-info/*
+/dist/

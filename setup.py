@@ -8,6 +8,8 @@ setuptools.setup(
     name="easy_pyweb",
     version="0.0.1",
     author="xiaoxi",
+    author_email="xiaoxiggnet@gmail.com",
+    url="https://github.com/xiaoxigithub",
     description="web helper",
     long_description=long_description,
     long_description_content_type="text/markdown",
