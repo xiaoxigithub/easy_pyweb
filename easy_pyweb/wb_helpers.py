@@ -39,7 +39,7 @@ class WebHelper:
             viewport=self.device['viewport'],
         )
         # 加载js脚本，取当前路径下的stealth.min.js
-        js_path = os.path.join(os.path.dirname(__file__), 'stealth.min.js')
+        js_path = os.path.join(os.path.dirname(__file__), 'js/stealth.min.js')
         with open(js_path) as f:
             js = f.read()
         self.browser.add_init_script(js)
