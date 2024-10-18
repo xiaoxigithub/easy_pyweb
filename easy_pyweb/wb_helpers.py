@@ -78,6 +78,7 @@ class WebHelper:
 class PageHelper:
     def __init__(self, page: Page):
         self.page = page
+        self.setIntervalJS = 'setInterval(function(){document.querySelectorAll("[style*=block], [scrolling=no],{business}").forEach(function(ele){ele.remove();}); document.querySelectorAll("[onclick]").forEach(function(e){e.removeAttribute("onclick");});},1000);'
 
     def rand_wait(self, min_time=1, max_time=3):
         self.page.wait_for_timeout(random.randint(min_time, max_time) * 1000)
@@ -89,6 +90,46 @@ class PageHelper:
                              document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight
                          );
                      }''')
+
+    def slide_bottom(self, scroll_step=300, wait_time=500):
+        """
+        滑动到底部
+        :param scroll_step: 300 每次滚动步长
+        :param wait_time: 500 滚动后等待时间（单位：秒）
+        :return:
+        """
+        # 慢慢滑动到网页底部
+        current_position = 0
+        total_height = self.get_height()
+        while current_position < total_height:
+            self.page.evaluate(f'window.scrollTo(0, {current_position});')
+            current_position += scroll_step
+            self.page.wait_for_timeout(wait_time)
+
+    def clear_block(self, selector):
+        """
+        添加定时器清除不需要的元素
+        :param selector:
+        """
+        self.page.evaluate(self.setIntervalJS.replace('{business}', selector))
+
+    def get_attribute_safe(self, node, selector, inner_text=True, attribute='') -> str:
+        """
+        获取属性忽略异常
+        :param node:操作的节点
+        :param selector:选择器
+        :param inner_text:bool 是否获取行内文本
+        :param attribute:src，href等属性
+        :return:str
+        """
+        try:
+            rand_time = random.randint(100, 600)
+            node = node.locator(selector).first
+            if inner_text:
+                return node.inner_text(timeout=rand_time)
+            return node.get_attribute(attribute, timeout=rand_time)
+        except:
+            return ''
 
     def page_element_check(self, selector, retry_count=3):
         """
