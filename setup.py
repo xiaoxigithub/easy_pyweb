@@ -1,12 +1,17 @@
+import os
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
+# 获取当前文件所在目录的绝对路径
+this_directory = os.path.abspath(os.path.dirname(__file__))
+
+# 构建 README.md 的绝对路径
+with open(os.path.join(this_directory, "README.md"), "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 # easy_pyweb项目
 setuptools.setup(
     name="easy_pyweb",
-    version="0.0.5",
+    version="0.1",
     author="xiaoxi",
     author_email="xiaoxiggnet@gmail.com",
     url="https://github.com/xiaoxigithub",
