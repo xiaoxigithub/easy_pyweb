@@ -4,7 +4,7 @@ import setuptools
 from pathlib import Path
 
 here = Path(__file__).parent
-long_description = (here / "README.md").read_text(encoding='utf-8')
+long_description = (here / "README.MD").read_text(encoding='utf-8')
 
 # easy_pyweb项目
 setuptools.setup(
