@@ -29,8 +29,8 @@ jobs:
       run: pwd
     - name: Build and Publish package
       env:
-          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}  # 确保在仓库设置中添加了这个 secret
-          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}  # 确保在仓库设置中添加了这个 secret
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
           python3 -m build
           python3 -m twine upload dist/*
