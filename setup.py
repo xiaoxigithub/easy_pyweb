@@ -5,7 +5,7 @@ import setuptools
 this_directory = os.path.abspath(os.path.dirname(__file__))
 
 # 构建 README.md 的绝对路径
-with open(os.path.join(this_directory, "README.md"), "r", encoding="utf-8") as fh:
+with open(os.path.join(this_directory, "easy_pyweb/README.md"), "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 # easy_pyweb项目
