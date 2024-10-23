@@ -7,8 +7,8 @@ long_description = "使用说明"
 
 # 尝试读取 README.md 文件
 readme_file_paths = [
-    os.path.join(this_directory, "README.MD"),
-    os.path.join(this_directory, "easy_pyweb/README.MD")
+    os.path.join(this_directory, "easy_pyweb/README.MD"),
+    os.path.join(this_directory, "README.MD")
 ]
 
 for readme_file in readme_file_paths:
@@ -20,7 +20,7 @@ for readme_file in readme_file_paths:
 # easy_pyweb项目
 setuptools.setup(
     name="easy_pyweb",
-    version="1.0",
+    version="1.1",
     author="xiaoxi",
     author_email="xiaoxiggnet@gmail.com",
     url="https://github.com/xiaoxigithub",

@@ -1,5 +1,5 @@
 # 说明
-playwright助手，内置函数
+pyweb助手，内置函数
 
 win系统如需控制隐藏窗口，需安装pywin32
 
