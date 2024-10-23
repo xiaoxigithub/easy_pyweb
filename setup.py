@@ -1,15 +1,26 @@
 import os
 import setuptools
 
-from pathlib import Path
+# 获取当前文件所在目录的绝对路径
+this_directory = os.path.abspath(os.path.dirname(__file__))
+long_description = "使用说明"
 
-here = Path(__file__).parent
-long_description = (here / "README.MD").read_text(encoding='utf-8')
+# 尝试读取 README.md 文件
+readme_file_paths = [
+    os.path.join(this_directory, "README.MD"),
+    os.path.join(this_directory, "easy_pyweb/README.MD")
+]
+
+for readme_file in readme_file_paths:
+    if os.path.exists(readme_file):
+        with open(readme_file, "r", encoding="utf-8") as fh:
+            long_description = fh.read()
+        break  # 找到文件后退出循环
 
 # easy_pyweb项目
 setuptools.setup(
     name="easy_pyweb",
-    version="0.2",
+    version="1.0",
     author="xiaoxi",
     author_email="xiaoxiggnet@gmail.com",
     url="https://github.com/xiaoxigithub",
