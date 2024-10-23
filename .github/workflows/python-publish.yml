@@ -1,23 +1,15 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Upload Python Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main  # 或者你希望触发的分支名，例如 'master'
 
 permissions:
   contents: read
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -28,12 +20,11 @@ jobs:
         python-version: '3.10'
     - name: Install dependencies
       run: |
-         python3 -m pip install --upgrade build
-         python3 -m pip install --user --upgrade twine
+         python3 -m pip install --upgrade pip build setuptools wheel twine
     - name: Build and Publish package
       env:
-          TWINE_USERNAME: $
-          TWINE_PASSWORD: $
+          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}  # 确保在仓库设置中添加了这个 secret
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}  # 确保在仓库设置中添加了这个 secret
       run: |
           python3 -m build
           python3 -m twine upload dist/*
