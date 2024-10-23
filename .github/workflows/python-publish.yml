@@ -21,6 +21,10 @@ jobs:
     - name: Install dependencies
       run: |
          python3 -m pip install --upgrade pip build setuptools wheel twine
+    - name: List files in the repository
+      run: ls -la
+    - name: Install the package locally
+      run: ls -al easy_pyweb
     - name: Build and Publish package
       env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}  # 确保在仓库设置中添加了这个 secret
