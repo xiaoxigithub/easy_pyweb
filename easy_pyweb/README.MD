@@ -1,8 +1,10 @@
 # 说明
-pyweb助手，封装一些个人常用类函数
+- pyweb助手，封装一些个人常用类函数
+- 内置【playwright浏览器类，logger，mysql，config】
+- win系统控制隐藏web窗口，需安装pywin32
 
-win系统控制隐藏web窗口，需安装pywin32
-
+# 安装使用
+`pip install easy-pyweb`
 
 ## 试一试 浏览器
 ```python
