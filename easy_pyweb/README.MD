@@ -13,6 +13,10 @@ def open_page():
     page = wb.new_page()
     page.goto('https://tool.lu/timestamp/')
     print(page.title())
+    print('高度%s' % page.get_height())
+    value = page.locator('#jsDatetimeO').input_value()
+    print('时间%s' % value)
+    page.slide_bottom()
     assert page.title() == '时间戳(Unix timestamp)转换工具 - 在线工具'
 ```
 

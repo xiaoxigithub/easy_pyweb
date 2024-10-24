@@ -3,6 +3,7 @@ import json
 import os
 import random
 from datetime import datetime, timezone
+from typing import Union
 from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright, Page
@@ -52,7 +53,8 @@ class WebHelper:
             page.route("**/*.{png,jpg,jpeg}", lambda route: route.abort())
             page.route("**/*", lambda route: route.abort()
             if route.request.resource_type == "image" else route.continue_())
-        return page
+        new_page: Union[Page, PageHelper] = PageHelper(page)
+        return new_page
 
     def load_cookies(self, ck_str: str, domain: str):
         if not os.path.exists(ck_str):
@@ -79,6 +81,10 @@ class PageHelper:
     def __init__(self, page: Page):
         self.page = page
         self.setIntervalJS = 'setInterval(function(){document.querySelectorAll("[style*=block], [scrolling=no],{business}").forEach(function(ele){ele.remove();}); document.querySelectorAll("[onclick]").forEach(function(e){e.removeAttribute("onclick");});},1000);'
+
+    def __getattr__(self, name):
+        # 当访问 PageHelper 未定义的属性时，将调用转发到 self.page
+        return getattr(self.page, name)
 
     def rand_wait(self, min_time=1, max_time=3):
         self.page.wait_for_timeout(random.randint(min_time, max_time) * 1000)

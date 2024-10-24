@@ -20,7 +20,7 @@ for readme_file in readme_file_paths:
 # easy_pyweb项目
 setuptools.setup(
     name="easy_pyweb",
-    version="1.1",
+    version="1.2",
     author="xiaoxi",
     author_email="xiaoxiggnet@gmail.com",
     url="https://github.com/xiaoxigithub",

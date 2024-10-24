@@ -35,7 +35,7 @@ def mysql_test():
 
 
 if __name__ == '__main__':
-    # open_page()
+    open_page()
     # log_test()
     # conf_test()
-    mysql_test()
+    # mysql_test()
