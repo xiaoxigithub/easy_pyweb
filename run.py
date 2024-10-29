@@ -4,8 +4,9 @@ from easy_pyweb.more_tool import SingletonLogger, ConfigParser
 
 
 def open_page():
-    wb = WebHelper(cookie_path='cookies.txt')
-    page = wb.new_page()
+    wb = WebHelper(use_async=False)
+    wb.init_browser_sync()
+    page = wb.new_page_sync()
     page.goto('https://tool.lu/timestamp/')
     print(page.title())
     assert page.title() == '时间戳(Unix timestamp)转换工具 - 在线工具'

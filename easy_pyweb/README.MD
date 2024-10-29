@@ -11,8 +11,9 @@
 from easy_pyweb.wb_helpers import WebHelper
 
 def open_page():
-    wb = WebHelper(cookie_path='cookies.txt')
-    page = wb.new_page()
+    wb = WebHelper(use_async=False)
+    wb.init_browser_sync()
+    page = wb.new_page_sync()
     page.goto('https://tool.lu/timestamp/')
     print(page.title())
     print('高度%s' % page.get_height())
